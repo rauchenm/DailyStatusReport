@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="645.0" prefWidth="845.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="control.ReportControl">
+   <children>
+      <DatePicker fx:id="dpReportDate" layoutX="52.0" layoutY="48.0" />
+      <Label layoutX="52.0" layoutY="25.0" text="Date" />
+      <Label layoutX="57.0" layoutY="90.0" text="Key Highlights" />
+      <TextField fx:id="tbHiglight" layoutX="50.0" layoutY="115.0" prefHeight="25.0" prefWidth="217.0" />
+      <TextField fx:id="tbIssue" layoutX="303.0" layoutY="115.0" prefHeight="25.0" prefWidth="206.0" />
+      <Label layoutX="303.0" layoutY="90.0" text="Key Issues" />
+      <Button fx:id="btAddHighlight" layoutX="50.0" layoutY="143.0" mnemonicParsing="false" onAction="#addHighlight" text="Add Highlight" />
+      <Button layoutX="303.0" layoutY="143.0" mnemonicParsing="false" onAction="#addIssue" prefHeight="25.0" prefWidth="109.0" text="Add Issue" />
+      <ListView fx:id="lvIssues" layoutX="536.0" layoutY="106.0" prefHeight="74.0" prefWidth="294.0" />
+      <Button fx:id="btAddUserStoryInf" layoutX="97.0" layoutY="564.0" mnemonicParsing="false" onAction="#addUserstoryInf" text="Add Userstory Information" />
+      <Label layoutX="52.0" layoutY="204.0" text="Userstory ID" />
+      <TextField fx:id="tbUserstoryID" layoutX="131.0" layoutY="200.0" />
+      <ChoiceBox fx:id="cbEntity" layoutX="131.0" layoutY="239.0" prefWidth="150.0" />
+      <Label layoutX="52.0" layoutY="243.0" text="Entity" />
+      <ChoiceBox fx:id="cbStatus" layoutX="131.0" layoutY="277.0" prefWidth="150.0" />
+      <Label layoutX="53.0" layoutY="282.0" text="Status" />
+      <Label layoutX="52.0" layoutY="319.0" text="Total TC" />
+      <TextField fx:id="tbTotalTc" layoutX="131.0" layoutY="315.0" prefHeight="25.0" prefWidth="44.0" />
+      <TextField fx:id="tbPass" layoutX="131.0" layoutY="351.0" prefHeight="25.0" prefWidth="44.0" />
+      <Label layoutX="52.0" layoutY="355.0" text="Pass" />
+      <TextField fx:id="tbFailed" layoutX="131.0" layoutY="383.0" prefHeight="25.0" prefWidth="44.0" />
+      <Label layoutX="52.0" layoutY="387.0" text="Failed" />
+      <TextField fx:id="tbBlocked" layoutX="132.0" layoutY="416.0" prefHeight="25.0" prefWidth="44.0" />
+      <Label layoutX="53.0" layoutY="420.0" text="Blocked" />
+      <TextField fx:id="tbNoRun" layoutX="237.0" layoutY="315.0" prefHeight="25.0" prefWidth="44.0" />
+      <TextField fx:id="tbDefer" layoutX="237.0" layoutY="351.0" prefHeight="25.0" prefWidth="44.0" />
+      <TextField fx:id="tbExePerc" layoutX="237.0" layoutY="383.0" prefHeight="25.0" prefWidth="44.0" />
+      <TextField fx:id="tbPassPerc" layoutX="237.0" layoutY="416.0" prefHeight="25.0" prefWidth="44.0" />
+      <Label layoutX="193.0" layoutY="318.0" text="No Run" />
+      <Label layoutX="199.0" layoutY="355.0" text="Defer" />
+      <Label layoutX="199.0" layoutY="387.0" text="Exe %" />
+      <Label layoutX="199.0" layoutY="420.0" text="Pass %" />
+      <Label layoutX="54.0" layoutY="453.0" text="Outstanding Defects" />
+      <TextField fx:id="tbOutstandDef" layoutX="52.0" layoutY="474.0" prefHeight="25.0" prefWidth="232.0" />
+      <TextField layoutX="52.0" layoutY="523.0" prefHeight="25.0" prefWidth="232.0" />
+      <Label layoutX="53.0" layoutY="503.0" text="Comments" />
+      <Separator layoutX="53.0" layoutY="183.0" prefHeight="5.0" prefWidth="461.0" />
+      <Label fx:id="lbReportId" layoutX="303.0" layoutY="52.0" text="ReportID" />
+      <ListView fx:id="lvHighlights" layoutX="536.0" layoutY="24.0" prefHeight="74.0" prefWidth="294.0" />
+      <ListView fx:id="lvUserstories" layoutX="330.0" layoutY="199.0" prefHeight="349.0" prefWidth="500.0" />
+      <Button fx:id="btGenerateReport" layoutX="381.0" layoutY="564.0" mnemonicParsing="false" onAction="#generateReport" prefHeight="25.0" prefWidth="377.0" text="Generate Report" textFill="#4fd77e" />
+   </children>
+</AnchorPane>
