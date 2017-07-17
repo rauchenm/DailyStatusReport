@@ -3,13 +3,13 @@ package model;
 import java.util.ArrayList;
 
 public class UserstoryList {
-	
+
 	ArrayList<Userstory> alUserstory;
 
 	public UserstoryList() {
 		super();
 	}
-	
+
 	public UserstoryList(ArrayList<Userstory> alUserstory) {
 		super();
 		this.alUserstory = alUserstory;
@@ -23,6 +23,4 @@ public class UserstoryList {
 		this.alUserstory = alUserstory;
 	}
 
-	
-	
 }

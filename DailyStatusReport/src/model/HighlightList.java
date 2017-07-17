@@ -10,7 +10,7 @@ public class HighlightList {
 		super();
 		this.alHighlight = alHighlight;
 	}
-	
+
 	public HighlightList() {
 		super();
 	}
@@ -22,8 +22,5 @@ public class HighlightList {
 	public void setAlHighlight(ArrayList<String> alHighlight) {
 		this.alHighlight = alHighlight;
 	}
-	
-	
-	
-	
+
 }

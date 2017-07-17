@@ -3,13 +3,14 @@ package model;
 import java.util.ArrayList;
 
 public class IssueList {
-	
+
 	ArrayList<String> alIssue = new ArrayList<>();
 
 	public IssueList(ArrayList<String> alIssue) {
 		super();
 		this.alIssue = alIssue;
 	}
+
 	public IssueList() {
 		super();
 	}
@@ -21,8 +22,5 @@ public class IssueList {
 	public void setAlIssue(ArrayList<String> alIssue) {
 		this.alIssue = alIssue;
 	}
-	
-	
-	
 
 }
