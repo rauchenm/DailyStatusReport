@@ -94,13 +94,14 @@ public class ReportControl implements Initializable{
 	@FXML
 	private void addHighlight() {
 		
+		System.out.println("Pressed Add Highlight");
 		
 	}
 	
 	@FXML
 	private void addIssue() {
 		
-		
+		System.out.println("Pressed Add Issue");
 		
 		
 	}
@@ -109,7 +110,7 @@ public class ReportControl implements Initializable{
 	private void generateReport() {
 		
 		
-		
+		System.out.println("Pressed Generate Report");
 		
 	}
 	@FXML
@@ -117,6 +118,7 @@ public class ReportControl implements Initializable{
 		
 //		Userstory us = new Userstory(tbUserstoryID.getText(), cbEntity.getSelectionModel().getSelectedItem(), );
 		
+		System.out.println("Pressed Add Userstory Information");
 		
 		
 		
