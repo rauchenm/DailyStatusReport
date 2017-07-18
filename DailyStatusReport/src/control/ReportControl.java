@@ -88,10 +88,10 @@ public class ReportControl implements Initializable {
 		cbStatus.setItems(FXCollections.observableArrayList("Not Started", "Scripting - InProgress", 
 				"BA Review", "Rework - In Progress", 
 				"Testing - In Progress", "Executed with Defects", 
-				"Exporatory / SME Testing", "Accepted"));
+				"Exploratory / SME Testing", "Accepted"));
 
 		cbEntity.setItems(FXCollections.observableArrayList("COM", "GIP", "LIF", "CLA", "PoS", "INT"));
-		lbReportId.setText(UUID.randomUUID().toString());
+		
 		
 
 	}
@@ -124,7 +124,9 @@ public class ReportControl implements Initializable {
 
 	@FXML
 	private void generateReport() {
-
+		
+		lbReportId.setText("DSR-" + cbEntity.getSelectionModel().getSelectedItem() + "-" + dpReportDate.getValue());
+		
 		Report report = new Report(
 				dpReportDate.getValue(), 
 				lbReportId.getText(), 
@@ -139,7 +141,7 @@ public class ReportControl implements Initializable {
 	private void addUserstoryInf() {
 			
 		calculatePerc();
-		
+	
 		 Userstory us = new Userstory(
 				 tbUserstoryID.getText(),
 				 cbEntity.getSelectionModel().getSelectedItem(),
@@ -180,7 +182,7 @@ public class ReportControl implements Initializable {
 	private void clearUserstoriesTextBoxes() {
 		
 		tbUserstoryID.clear();
-		cbEntity.getSelectionModel().clearSelection();
+//		cbEntity.getSelectionModel().clearSelection();
 		cbStatus.getSelectionModel().clearSelection();
 		tbTotalTc.setText("0");
 		tbPass.setText("0");
