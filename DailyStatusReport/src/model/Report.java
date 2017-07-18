@@ -55,12 +55,24 @@ public class Report {
 	public String toString(){
 		
 		String string = 
-				"Report ID: " + reportID
-				+ "Date: " + getReportDate() 
-				+ "Highlights: " + getHiglights()
-				+ "Issues: " + getIssues()
+				"Report ID: " + reportID + "\n"
+				+ "Date: " + getReportDate() + "\n"
+				+ "Highlights: " + getHiglights() + "\n"
+				+ "Issues: " + getIssues() + "\n"
 				+ "Userstories:" + getStories();
 		
+		return string;
+		
+	}
+	
+	public String toHttp() {
+		
+		String string = 
+				"Report ID: " + reportID + "\n"
+				+ "Date: " + getReportDate() + "\n"
+				+ "Highlights: " + getHiglights() + "\n"
+				+ "Issues: " + getIssues() + "\n"
+				+ "Userstories:" + getStories();
 		
 		return string;
 		

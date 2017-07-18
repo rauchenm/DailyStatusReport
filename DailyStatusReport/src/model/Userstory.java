@@ -139,4 +139,24 @@ public class Userstory {
 		this.comments = comments;
 	}
 
+	public String toString() {
+		
+		String string = 
+				"UserStory ID: " + getUserStoryID() + " ; "
+				+ "Entity: " + getEntity()+ " ; "
+				+ "Status: " + getStatus() + " ; "
+				+ "TotalTC: " + getTcTotal() + " ; "
+				+ "Pass:" + getTcPass() + " ; "		
+				+ "Fail: " + getTcFail()+ " ; "
+				+ "Blocked:  " + getTcBlocked() + " ; " 
+				+ "No Run: " + getTcNoRun() + " ; "
+				+ "Defer: " + getTcDefer() + " ; "
+				+ "Perc Exe: " + getTcExePerc()+ " ; "
+				+ "Perc Pass: " + getTcPassPerc() + " ; "
+				+ "Outstanding Defects: " + getDefects()+ " ; "
+				+ "Comments: " + getComments() + " ; ";
+		
+		return string;
+	}
+
 }

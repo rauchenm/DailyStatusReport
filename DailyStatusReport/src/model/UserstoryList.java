@@ -15,9 +15,21 @@ public class UserstoryList {
 		super();
 		this.alUserstory = alUserstory;
 	}
-
+	
 	public ObservableList<Userstory> getAlUserstory() {
 		return alUserstory;
+	}
+
+	public ObservableList<String> getAlUserstoryStr() {
+		
+		ObservableList<String> alUserstoryStr = FXCollections.observableArrayList();
+		for (int i = 0; i < alUserstory.size(); i++) {
+			
+			alUserstoryStr.add(alUserstory.get(i).toString());
+			
+		}
+		 return alUserstoryStr;
+		
 	}
 
 	public void setAlUserstory(ObservableList<Userstory> alUserstory) {
@@ -30,11 +42,12 @@ public class UserstoryList {
 		
 	}
 	
-	public ObservableList<Userstory> getAllUserstories() {
+	public int getSize(){
 		
-		return alUserstory;
+		return alUserstory.size();
 		
 	}
+
 	
 	
 	

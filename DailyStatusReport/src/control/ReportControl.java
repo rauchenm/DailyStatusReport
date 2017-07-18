@@ -45,7 +45,7 @@ public class ReportControl implements Initializable {
 	
 	// Report Userstories
 	@FXML
-	private ListView<Userstory> lvUserstories;
+	private ListView<String> lvUserstories;
 	@FXML
 	private TextField tbUserstoryID;
 	@FXML
@@ -87,7 +87,10 @@ public class ReportControl implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-		cbStatus.setItems(FXCollections.observableArrayList("Status", "Test"));
+		cbStatus.setItems(FXCollections.observableArrayList("Not Started", "Scripting - InProgress", 
+				"BA Review", "Rework - In Progress", 
+				"Testing - In Progress", "Executed with Defects", 
+				"Exporatory / SME Testing", "Accepted"));
 
 		cbEntity.setItems(FXCollections.observableArrayList("COM", "GIP", "LIF", "CLA", "PoS", "INT"));
 		lbReportId.setText(UUID.randomUUID().toString());
@@ -152,9 +155,9 @@ public class ReportControl implements Initializable {
 				 tbComments.getText());
 		 
 		 userstoryList.add(us);
-		 lvUserstories.setItems(userstoryList.getAllUserstories());
+
+	lvUserstories.setItems(userstoryList.getAlUserstoryStr());			}
 
 
-	}
 
 }
