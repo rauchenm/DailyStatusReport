@@ -1,26 +1,42 @@
 package model;
 
-import java.util.ArrayList;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class UserstoryList {
 
-	ArrayList<Userstory> alUserstory;
+	ObservableList<Userstory> alUserstory = FXCollections.observableArrayList();
 
 	public UserstoryList() {
 		super();
 	}
-
-	public UserstoryList(ArrayList<Userstory> alUserstory) {
+	
+	public UserstoryList(ObservableList<Userstory> alUserstory) {
 		super();
 		this.alUserstory = alUserstory;
 	}
 
-	public ArrayList<Userstory> getAlUserstory() {
+	public ObservableList<Userstory> getAlUserstory() {
 		return alUserstory;
 	}
 
-	public void setAlUserstory(ArrayList<Userstory> alUserstory) {
+	public void setAlUserstory(ObservableList<Userstory> alUserstory) {
 		this.alUserstory = alUserstory;
 	}
+
+	public void add(Userstory us) {
+		
+		alUserstory.add(us);
+		
+	}
+	
+	public ObservableList<Userstory> getAllUserstories() {
+		
+		return alUserstory;
+		
+	}
+	
+	
+	
 
 }

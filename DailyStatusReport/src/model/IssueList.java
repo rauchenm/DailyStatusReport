@@ -1,26 +1,40 @@
 package model;
 
-import java.util.ArrayList;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class IssueList {
 
-	ArrayList<String> alIssue = new ArrayList<>();
-
-	public IssueList(ArrayList<String> alIssue) {
-		super();
-		this.alIssue = alIssue;
-	}
-
+	ObservableList<String> alIssue = FXCollections.observableArrayList();
+	
 	public IssueList() {
 		super();
 	}
-
-	public ArrayList<String> getAlIssue() {
-		return alIssue;
-	}
-
-	public void setAlIssue(ArrayList<String> alIssue) {
+	
+	public IssueList(ObservableList<String> alIssue) {
+		super();
 		this.alIssue = alIssue;
 	}
 
+	public ObservableList<String> getAlIssue() {
+		return alIssue;
+	}
+
+	public void setAlIssue(ObservableList<String> alIssue) {
+		this.alIssue = alIssue;
+	}
+
+	public void setIssue(String issue) {
+		
+		alIssue.add(issue);
+		
+	}
+
+	public int getSize() {
+		
+		return alIssue.size();
+		
+	}
+	
+	
 }

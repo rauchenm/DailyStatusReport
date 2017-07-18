@@ -13,11 +13,11 @@ public class Userstory {
 	private int tcDefer;
 	private double tcExePerc;
 	private double tcPassPerc;
-	private int defects;
+	private String defects;
 	private String comments;
 
 	public Userstory(String userStoryID, String entity, String status, int tcTotal, int tcPass, int tcFail,
-			int tcBlocked, int tcNoRun, int tcDefer, double tcExePerc, double tcPassPerc, int defects,
+			int tcBlocked, int tcNoRun, int tcDefer, double tcExePerc, double tcPassPerc, String outDefects,
 			String comments) {
 		super();
 		this.userStoryID = userStoryID;
@@ -31,7 +31,7 @@ public class Userstory {
 		this.tcDefer = tcDefer;
 		this.tcExePerc = tcExePerc;
 		this.tcPassPerc = tcPassPerc;
-		this.defects = defects;
+		this.defects = outDefects;
 		this.comments = comments;
 	}
 
@@ -123,11 +123,11 @@ public class Userstory {
 		this.tcPassPerc = tcPassPerc;
 	}
 
-	public int getDefects() {
+	public String getDefects() {
 		return defects;
 	}
 
-	public void setDefects(int defects) {
+	public void setDefects(String defects) {
 		this.defects = defects;
 	}
 
