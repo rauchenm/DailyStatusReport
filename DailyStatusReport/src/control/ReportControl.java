@@ -72,8 +72,6 @@ public class ReportControl implements Initializable {
 	private TextField tbOutstandDef;
 	@FXML
 	private TextField tbComments;
-	@FXML
-	private TextField tbDefects;
 	
 	@FXML
 	private Button btAddUserStoryInf;
@@ -94,6 +92,7 @@ public class ReportControl implements Initializable {
 
 		cbEntity.setItems(FXCollections.observableArrayList("COM", "GIP", "LIF", "CLA", "PoS", "INT"));
 		lbReportId.setText(UUID.randomUUID().toString());
+		
 
 	}
 
@@ -131,7 +130,7 @@ public class ReportControl implements Initializable {
 				lbReportId.getText(), 
 				highlightList.getAlHighlight(), 
 				issueList.getAlIssue(), 
-				userstoryList.getAlUserstory());
+				userstoryList.getAlUserstoryStr());
 		
 		System.out.println(report.toString());
 	}
@@ -139,6 +138,8 @@ public class ReportControl implements Initializable {
 	@FXML
 	private void addUserstoryInf() {
 			
+		calculatePerc();
+		
 		 Userstory us = new Userstory(
 				 tbUserstoryID.getText(),
 				 cbEntity.getSelectionModel().getSelectedItem(),
@@ -156,8 +157,43 @@ public class ReportControl implements Initializable {
 		 
 		 userstoryList.add(us);
 
-	lvUserstories.setItems(userstoryList.getAlUserstoryStr());			}
+	lvUserstories.setItems(userstoryList.getAlUserstoryStr());
+	clearUserstoriesTextBoxes();
 
+	}
+
+	private void calculatePerc() {
+		
+		int tcPass = Integer.valueOf(tbPass.getText());
+		double tcTotal = Double.valueOf(tbTotalTc.getText());
+		int tcFailed = Integer.valueOf(tbFailed.getText());
+		double exePerc = 0.0;
+		double passPerc = 0.0;
+		
+		exePerc = ((tcPass+tcFailed)/tcTotal)*100;
+		passPerc= (tcPass/tcTotal)*100;
+
+		tbExePerc.setText(String.valueOf(exePerc));
+		tbPassPerc.setText(String.valueOf(passPerc));
+	}
+
+	private void clearUserstoriesTextBoxes() {
+		
+		tbUserstoryID.clear();
+		cbEntity.getSelectionModel().clearSelection();
+		cbStatus.getSelectionModel().clearSelection();
+		tbTotalTc.setText("0");
+		tbPass.setText("0");
+		tbFailed.setText("0");
+		tbBlocked.setText("0");;
+		tbNoRun.setText("0");
+		tbDefer.setText("0");
+		tbExePerc.setText("0.0");
+		tbPassPerc.setText("0.0");
+		tbOutstandDef.clear();
+		tbComments.clear();
+			
+	}
 
 
 }

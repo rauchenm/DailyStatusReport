@@ -10,10 +10,10 @@ public class Report {
 	private String reportID;
 	private ObservableList<String> higlights;
 	private ObservableList<String> issues;
-	private ObservableList<Userstory> stories;
+	private ObservableList<String> stories;
 	
 	public Report(LocalDate reportDate, String reportID, ObservableList<String> higlights, ObservableList<String> issues,
-			ObservableList<Userstory> stories) {
+			ObservableList<String> stories) {
 		super();
 		this.reportDate = reportDate;
 		this.reportID = reportID;
@@ -45,13 +45,13 @@ public class Report {
 	public void setIssues(ObservableList<String> issues) {
 		this.issues = issues;
 	}
-	public ObservableList<Userstory> getStories() {
+	
+	public ObservableList<String> getStories() {
 		return stories;
 	}
-	public void setStories(ObservableList<Userstory> stories) {
+	public void setStories(ObservableList<String> stories) {
 		this.stories = stories;
 	}
-	
 	public String toString(){
 		
 		String string = 
@@ -59,7 +59,7 @@ public class Report {
 				+ "Date: " + getReportDate() + "\n"
 				+ "Highlights: " + getHiglights() + "\n"
 				+ "Issues: " + getIssues() + "\n"
-				+ "Userstories:" + getStories();
+				+ "Userstories: " + getStories();
 		
 		return string;
 		
@@ -72,7 +72,7 @@ public class Report {
 				+ "Date: " + getReportDate() + "\n"
 				+ "Highlights: " + getHiglights() + "\n"
 				+ "Issues: " + getIssues() + "\n"
-				+ "Userstories:" + getStories();
+				+ "Userstories: " + getStories();
 		
 		return string;
 		

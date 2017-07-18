@@ -5,8 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="645.0" prefWidth="845.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="control.ReportControl">
+<AnchorPane prefHeight="645.0" prefWidth="845.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.ReportControl">
    <children>
       <DatePicker fx:id="dpReportDate" layoutX="52.0" layoutY="48.0" />
       <Label layoutX="52.0" layoutY="25.0" text="Date" />
@@ -25,17 +24,17 @@
       <ChoiceBox fx:id="cbStatus" layoutX="131.0" layoutY="277.0" prefWidth="150.0" />
       <Label layoutX="52.0" layoutY="282.0" text="Status" />
       <Label layoutX="52.0" layoutY="319.0" text="Total TC" />
-      <TextField fx:id="tbTotalTc" layoutX="131.0" layoutY="315.0" prefHeight="25.0" prefWidth="44.0" />
-      <TextField fx:id="tbPass" layoutX="131.0" layoutY="351.0" prefHeight="25.0" prefWidth="44.0" />
+      <TextField fx:id="tbTotalTc" layoutX="131.0" layoutY="315.0" prefHeight="25.0" prefWidth="44.0" text="0" />
+      <TextField fx:id="tbPass" layoutX="131.0" layoutY="351.0" prefHeight="25.0" prefWidth="44.0" text="0" />
       <Label layoutX="52.0" layoutY="355.0" text="Pass" />
-      <TextField fx:id="tbFailed" layoutX="131.0" layoutY="383.0" prefHeight="25.0" prefWidth="44.0" />
+      <TextField fx:id="tbFailed" layoutX="131.0" layoutY="383.0" prefHeight="25.0" prefWidth="44.0" text="0" />
       <Label layoutX="52.0" layoutY="387.0" text="Failed" />
-      <TextField fx:id="tbBlocked" layoutX="131.0" layoutY="416.0" prefHeight="25.0" prefWidth="44.0" />
+      <TextField fx:id="tbBlocked" layoutX="131.0" layoutY="416.0" prefHeight="25.0" prefWidth="44.0" text="0" />
       <Label layoutX="52.0" layoutY="420.0" text="Blocked" />
-      <TextField fx:id="tbNoRun" layoutX="237.0" layoutY="315.0" prefHeight="25.0" prefWidth="44.0" />
-      <TextField fx:id="tbDefer" layoutX="237.0" layoutY="351.0" prefHeight="25.0" prefWidth="44.0" />
-      <TextField fx:id="tbExePerc" layoutX="237.0" layoutY="383.0" prefHeight="25.0" prefWidth="44.0" />
-      <TextField fx:id="tbPassPerc" layoutX="237.0" layoutY="416.0" prefHeight="25.0" prefWidth="44.0" />
+      <TextField fx:id="tbNoRun" layoutX="237.0" layoutY="315.0" prefHeight="25.0" prefWidth="44.0" text="0" />
+      <TextField fx:id="tbDefer" layoutX="237.0" layoutY="351.0" prefHeight="25.0" prefWidth="44.0" text="0" />
+      <TextField fx:id="tbExePerc" disable="true" editable="false" layoutX="237.0" layoutY="383.0" prefHeight="25.0" prefWidth="44.0" text="0.0" />
+      <TextField fx:id="tbPassPerc" disable="true" editable="false" layoutX="237.0" layoutY="416.0" prefHeight="25.0" prefWidth="44.0" text="0.0" />
       <Label layoutX="193.0" layoutY="318.0" text="No Run" />
       <Label layoutX="199.0" layoutY="355.0" text="Defer" />
       <Label layoutX="199.0" layoutY="387.0" text="Exe %" />
