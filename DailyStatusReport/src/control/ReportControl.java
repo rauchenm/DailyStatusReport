@@ -1,8 +1,11 @@
 package control;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.UUID;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -15,7 +18,9 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import model.HighlightList;
 import model.IssueList;
+import model.ReadFile;
 import model.Report;
+import model.ReportList;
 import model.Userstory;
 import model.UserstoryList;
 
@@ -123,18 +128,24 @@ public class ReportControl implements Initializable {
 	}
 
 	@FXML
-	private void generateReport() {
+	private void generateReport() throws IOException {
 		
-		lbReportId.setText("DSR-" + cbEntity.getSelectionModel().getSelectedItem() + "-" + dpReportDate.getValue());
+		String reportName = "DSR-" + cbEntity.getSelectionModel().getSelectedItem() + "-" + dpReportDate.getValue();
+		lbReportId.setText(reportName);
 		
 		Report report = new Report(
 				dpReportDate.getValue(), 
 				lbReportId.getText(), 
 				highlightList.getAlHighlight(), 
-				issueList.getAlIssue(), 
-				userstoryList.getAlUserstoryStr());
+				issueList.getAlIssue(),
+				userstoryList.getAlUserstory());
 		
 		System.out.println(report.toString());
+		
+		File file = new File("D:\\Privat\\"+ reportName );
+		BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+		writer.write(report.toHttp());
+		writer.close();
 	}
 
 	@FXML
@@ -164,6 +175,20 @@ public class ReportControl implements Initializable {
 
 	}
 
+	@FXML
+	private void btReadFile() {
+		
+		ReadFile rf = new ReadFile();
+		ReportList reportList = new ReportList();
+		reportList = rf.readFile();
+		
+		for (int i = 0; i < reportList.getSize(); i++) {
+			
+			reportList.getReportsList().get(i);
+			
+		}
+		
+	}
 	private void calculatePerc() {
 		
 		int tcPass = Integer.valueOf(tbPass.getText());
