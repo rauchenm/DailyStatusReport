@@ -1,52 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="645.0" prefWidth="845.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.ReportControl">
+<AnchorPane prefHeight="638.0" prefWidth="741.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.ReportControl">
    <children>
-      <DatePicker fx:id="dpReportDate" layoutX="52.0" layoutY="48.0" />
-      <Label layoutX="52.0" layoutY="25.0" text="Date" />
-      <Label layoutX="57.0" layoutY="90.0" text="Key Highlights" />
-      <TextField fx:id="tbHiglight" layoutX="50.0" layoutY="115.0" prefHeight="25.0" prefWidth="217.0" />
-      <TextField fx:id="tbIssue" layoutX="303.0" layoutY="115.0" prefHeight="25.0" prefWidth="206.0" />
-      <Label layoutX="303.0" layoutY="90.0" text="Key Issues" />
-      <Button fx:id="btAddHighlight" layoutX="50.0" layoutY="143.0" mnemonicParsing="false" onAction="#addHighlight" text="Add Highlight" />
-      <Button layoutX="303.0" layoutY="143.0" mnemonicParsing="false" onAction="#addIssue" prefHeight="25.0" prefWidth="109.0" text="Add Issue" />
-      <ListView fx:id="lvIssues" layoutX="536.0" layoutY="106.0" prefHeight="74.0" prefWidth="294.0" />
-      <Button fx:id="btAddUserStoryInf" layoutX="97.0" layoutY="564.0" mnemonicParsing="false" onAction="#addUserstoryInf" text="Add Userstory Information" />
-      <Label layoutX="52.0" layoutY="204.0" text="Userstory ID" />
-      <TextField fx:id="tbUserstoryID" layoutX="131.0" layoutY="200.0" />
-      <ChoiceBox fx:id="cbEntity" layoutX="131.0" layoutY="239.0" prefWidth="150.0" />
-      <Label layoutX="52.0" layoutY="243.0" text="Entity" />
-      <ChoiceBox fx:id="cbStatus" layoutX="131.0" layoutY="277.0" prefWidth="150.0" />
-      <Label layoutX="52.0" layoutY="282.0" text="Status" />
-      <Label layoutX="52.0" layoutY="319.0" text="Total TC" />
-      <TextField fx:id="tbTotalTc" layoutX="131.0" layoutY="315.0" prefHeight="25.0" prefWidth="44.0" text="0" />
-      <TextField fx:id="tbPass" layoutX="131.0" layoutY="351.0" prefHeight="25.0" prefWidth="44.0" text="0" />
-      <Label layoutX="52.0" layoutY="355.0" text="Pass" />
-      <TextField fx:id="tbFailed" layoutX="131.0" layoutY="383.0" prefHeight="25.0" prefWidth="44.0" text="0" />
-      <Label layoutX="52.0" layoutY="387.0" text="Failed" />
-      <TextField fx:id="tbBlocked" layoutX="131.0" layoutY="416.0" prefHeight="25.0" prefWidth="44.0" text="0" />
-      <Label layoutX="52.0" layoutY="420.0" text="Blocked" />
-      <TextField fx:id="tbNoRun" layoutX="237.0" layoutY="315.0" prefHeight="25.0" prefWidth="44.0" text="0" />
-      <TextField fx:id="tbDefer" layoutX="237.0" layoutY="351.0" prefHeight="25.0" prefWidth="44.0" text="0" />
-      <TextField fx:id="tbExePerc" disable="true" editable="false" layoutX="237.0" layoutY="383.0" prefHeight="25.0" prefWidth="44.0" text="0.0" />
-      <TextField fx:id="tbPassPerc" disable="true" editable="false" layoutX="237.0" layoutY="416.0" prefHeight="25.0" prefWidth="44.0" text="0.0" />
-      <Label layoutX="193.0" layoutY="318.0" text="No Run" />
-      <Label layoutX="199.0" layoutY="355.0" text="Defer" />
-      <Label layoutX="199.0" layoutY="387.0" text="Exe %" />
-      <Label layoutX="199.0" layoutY="420.0" text="Pass %" />
-      <Label layoutX="54.0" layoutY="453.0" text="Outstanding Defects" />
-      <TextField fx:id="tbOutstandDef" layoutX="52.0" layoutY="474.0" prefHeight="25.0" prefWidth="232.0" />
-      <Label layoutX="53.0" layoutY="503.0" text="Comments" />
-      <TextField fx:id="tbComments" layoutX="52.0" layoutY="523.0" prefHeight="25.0" prefWidth="232.0" />
-      <Separator layoutX="53.0" layoutY="183.0" prefHeight="5.0" prefWidth="461.0" />
-      <Label fx:id="lbReportId" layoutX="303.0" layoutY="52.0" text="ReportID" />
-      <ListView fx:id="lvHighlights" layoutX="536.0" layoutY="24.0" prefHeight="74.0" prefWidth="294.0" />
-      <ListView fx:id="lvUserstories" layoutX="330.0" layoutY="199.0" prefHeight="349.0" prefWidth="500.0" />
-      <Button fx:id="btGenerateReport" layoutX="381.0" layoutY="564.0" mnemonicParsing="false" onAction="#generateReport" prefHeight="25.0" prefWidth="377.0" text="Generate Report" textFill="#4fd77e" />
+      <TabPane layoutX="-3.0" layoutY="28.0" prefHeight="645.0" prefWidth="845.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <tabs>
+          <Tab text="Userstory Files">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="btRadFile" layoutX="407.0" layoutY="535.0" mnemonicParsing="false" onAction="#readFile" prefHeight="25.0" prefWidth="157.0" text="Read File" />
+                        <ListView fx:id="lvReadFile" layoutX="256.0" layoutY="27.0" prefHeight="482.0" prefWidth="458.0" />
+                        <ChoiceBox fx:id="cbReports" layoutX="28.0" layoutY="78.0" prefHeight="25.0" prefWidth="202.0" />
+                        <Label layoutX="28.0" layoutY="52.0" prefHeight="17.0" prefWidth="104.0" text="Select Report" />
+                        <Button fx:id="btShowReport" layoutX="28.0" layoutY="121.0" mnemonicParsing="false" onAction="#viewDetailsReport" text="Show Report" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Manual Userstory">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="604.0" prefWidth="773.0">
+                     <children>
+                        <DatePicker fx:id="dpReportDate" layoutX="79.0" layoutY="16.0" />
+                        <Label layoutX="37.0" layoutY="20.0" text="Date" />
+                        <Label layoutX="40.0" layoutY="45.0" text="Key Highlights" />
+                        <TextField fx:id="tbHiglight" layoutX="41.0" layoutY="144.0" prefHeight="25.0" prefWidth="182.0" />
+                        <TextField fx:id="tbIssue" layoutX="393.0" layoutY="146.0" prefHeight="25.0" prefWidth="179.0" />
+                        <Label layoutX="396.0" layoutY="45.0" text="Key Issues" />
+                        <Button fx:id="btAddHighlight" layoutX="245.0" layoutY="144.0" mnemonicParsing="false" onAction="#addHighlight" text="Add Highlight" />
+                        <Button layoutX="578.0" layoutY="146.0" mnemonicParsing="false" onAction="#addIssue" prefHeight="25.0" prefWidth="109.0" text="Add Issue" />
+                        <ListView fx:id="lvIssues" layoutX="393.0" layoutY="62.0" prefHeight="74.0" prefWidth="294.0" />
+                        <Button fx:id="btAddUserStoryInf" layoutX="88.0" layoutY="561.0" mnemonicParsing="false" onAction="#addUserstoryInf" text="Add Userstory Information" />
+                        <Label layoutX="17.0" layoutY="195.0" text="Userstory ID" />
+                        <TextField fx:id="tbUserstoryID" layoutX="90.0" layoutY="190.0" />
+                        <ChoiceBox fx:id="cbEntity" layoutX="90.0" layoutY="227.0" prefWidth="150.0" />
+                        <Label layoutX="48.0" layoutY="231.0" text="Entity" />
+                        <ChoiceBox fx:id="cbStatus" layoutX="89.0" layoutY="263.0" prefWidth="150.0" />
+                        <Label layoutX="42.0" layoutY="267.0" text="Status" />
+                        <Label layoutX="37.0" layoutY="316.0" text="Total TC" />
+                        <TextField fx:id="tbTotalTc" layoutX="88.0" layoutY="312.0" prefHeight="25.0" prefWidth="44.0" text="0" />
+                        <TextField fx:id="tbPass" layoutX="88.0" layoutY="346.0" prefHeight="25.0" prefWidth="44.0" text="0" />
+                        <Label layoutX="55.0" layoutY="350.0" text="Pass" />
+                        <TextField fx:id="tbFailed" layoutX="88.0" layoutY="379.0" prefHeight="25.0" prefWidth="44.0" text="0" />
+                        <Label layoutX="46.0" layoutY="383.0" text="Failed" />
+                        <TextField fx:id="tbBlocked" layoutX="88.0" layoutY="412.0" prefHeight="25.0" prefWidth="44.0" text="0" />
+                        <Label layoutX="37.0" layoutY="416.0" text="Blocked" />
+                        <TextField fx:id="tbNoRun" layoutX="202.0" layoutY="312.0" prefHeight="25.0" prefWidth="44.0" text="0" />
+                        <TextField fx:id="tbDefer" layoutX="203.0" layoutY="346.0" prefHeight="25.0" prefWidth="44.0" text="0" />
+                        <TextField fx:id="tbExePerc" disable="true" editable="false" layoutX="202.0" layoutY="412.0" prefHeight="25.0" prefWidth="44.0" text="0.0" />
+                        <TextField fx:id="tbPassPerc" disable="true" editable="false" layoutX="202.0" layoutY="379.0" prefHeight="25.0" prefWidth="44.0" text="0.0" />
+                        <Label layoutX="160.0" layoutY="316.0" text="No Run" />
+                        <Label layoutX="166.0" layoutY="350.0" text="Defer" />
+                        <Label layoutX="165.0" layoutY="416.0" text="Exe %" />
+                        <Label layoutX="162.0" layoutY="383.0" text="Pass %" />
+                        <Label layoutX="26.0" layoutY="447.0" text="Outstanding Defects" />
+                        <TextField fx:id="tbOutstandDef" layoutX="29.0" layoutY="464.0" prefHeight="25.0" prefWidth="232.0" />
+                        <Label layoutX="26.0" layoutY="498.0" text="Comments" />
+                        <TextField fx:id="tbComments" layoutX="29.0" layoutY="516.0" prefHeight="25.0" prefWidth="232.0" />
+                        <Label fx:id="lbReportId" layoutX="299.0" layoutY="20.0" text="ReportID" />
+                        <ListView fx:id="lvHighlights" layoutX="42.0" layoutY="62.0" prefHeight="74.0" prefWidth="294.0" />
+                        <Button fx:id="btGenerateReport" layoutX="347.0" layoutY="549.0" mnemonicParsing="false" onAction="#generateReport" prefHeight="25.0" prefWidth="301.0" text="Generate Report" textFill="#4fd77e" />
+                        <Separator layoutX="17.0" layoutY="178.0" prefHeight="5.0" prefWidth="751.0" />
+                        <ListView fx:id="lvUserstory" layoutX="271.0" layoutY="190.0" prefHeight="317.0" prefWidth="457.0" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
    </children>
 </AnchorPane>

@@ -5,7 +5,7 @@ import javafx.collections.ObservableList;
 
 public class UserstoryList {
 
-	ObservableList<Userstory> alUserstory = FXCollections.observableArrayList();
+	private ObservableList<Userstory> alUserstory = FXCollections.observableArrayList();
 
 	public UserstoryList() {
 		super();
@@ -13,6 +13,7 @@ public class UserstoryList {
 	
 	public UserstoryList(ObservableList<Userstory> alUserstory) {
 		super();
+
 		this.alUserstory = alUserstory;
 	}
 	

@@ -2,8 +2,6 @@ package model;
 
 import java.time.LocalDate;
 
-import javax.swing.text.StyledEditorKit.ForegroundAction;
-
 import javafx.collections.ObservableList;
 
 public class Report {
@@ -14,6 +12,10 @@ public class Report {
 	private ObservableList<String> issues;
 	private ObservableList<Userstory> stories;
 	
+	public Report() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public Report(LocalDate reportDate, String reportID, ObservableList<String> higlights, ObservableList<String> issues,
 			ObservableList<Userstory> stories) {
 		super();

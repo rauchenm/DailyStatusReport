@@ -1,7 +1,8 @@
 package model;
 
 public class Userstory {
-
+	
+	private String reportId; 
 	private String userStoryID;
 	private String entity;
 	private String status;
@@ -16,8 +17,27 @@ public class Userstory {
 	private String defects;
 	private String comments;
 
+	public Userstory(String reportId, String userStoryID, String entity, String status, int tcTotal, int tcPass, int tcFail,
+			int tcBlocked, int tcNoRun, int tcDefer, double tcExePerc, double tcPassPerc, String defects,
+			String comments) {
+		super();
+		this.reportId = reportId;
+		this.userStoryID = userStoryID;
+		this.entity = entity;
+		this.status = status;
+		this.tcTotal = tcTotal;
+		this.tcPass = tcPass;
+		this.tcFail = tcFail;
+		this.tcBlocked = tcBlocked;
+		this.tcNoRun = tcNoRun;
+		this.tcDefer = tcDefer;
+		this.tcExePerc = tcExePerc;
+		this.tcPassPerc = tcPassPerc;
+		this.defects = defects;
+		this.comments = comments;
+	}
 	public Userstory(String userStoryID, String entity, String status, int tcTotal, int tcPass, int tcFail,
-			int tcBlocked, int tcNoRun, int tcDefer, double tcExePerc, double tcPassPerc, String outDefects,
+			int tcBlocked, int tcNoRun, int tcDefer, double tcExePerc, double tcPassPerc, String defects,
 			String comments) {
 		super();
 		this.userStoryID = userStoryID;
@@ -31,10 +51,22 @@ public class Userstory {
 		this.tcDefer = tcDefer;
 		this.tcExePerc = tcExePerc;
 		this.tcPassPerc = tcPassPerc;
-		this.defects = outDefects;
+		this.defects = defects;
 		this.comments = comments;
 	}
+	
+	public Userstory() {
+		super();
+	}
+	
+	public String getReportId() {
+		return reportId;
+	}
 
+	public void setReportId(String reportId) {
+		this.reportId = reportId;
+	}
+	
 	public String getUserStoryID() {
 		return userStoryID;
 	}
@@ -158,5 +190,7 @@ public class Userstory {
 		
 		return string;
 	}
+
+
 
 }
