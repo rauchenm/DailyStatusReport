@@ -5,10 +5,10 @@ import javafx.collections.ObservableList;
 
 public class HighlightList {
 
-	ObservableList<String> alHighlight = FXCollections.observableArrayList();
+	ObservableList<Highlight> alHighlight = FXCollections.observableArrayList();
 			
 
-	public HighlightList(ObservableList<String> alHighlight) {
+	public HighlightList(ObservableList<Highlight> alHighlight) {
 		super();
 		this.alHighlight = alHighlight;
 	}
@@ -17,15 +17,15 @@ public class HighlightList {
 		super();
 	}
 
-	public ObservableList<String> getAlHighlight() {
+	public ObservableList<Highlight> getAlHighlight() {
 		return alHighlight;
 	}
 
-	public void setAlHighlight(ObservableList<String> alHighlight) {
+	public void setAlHighlight(ObservableList<Highlight> alHighlight) {
 		this.alHighlight = alHighlight;
 	}
 
-	public void setHighlight(String highlight) {
+	public void setHighlight(Highlight highlight) {
 		
 		alHighlight.add(highlight);
 		

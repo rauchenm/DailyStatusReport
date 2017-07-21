@@ -5,26 +5,26 @@ import javafx.collections.ObservableList;
 
 public class IssueList {
 
-	ObservableList<String> alIssue = FXCollections.observableArrayList();
+	ObservableList<Issue> alIssue = FXCollections.observableArrayList();
 	
 	public IssueList() {
 		super();
 	}
 	
-	public IssueList(ObservableList<String> alIssue) {
+	public IssueList(ObservableList<Issue> alIssue) {
 		super();
 		this.alIssue = alIssue;
 	}
 
-	public ObservableList<String> getAlIssue() {
+	public ObservableList<Issue> getAlIssue() {
 		return alIssue;
 	}
 
-	public void setAlIssue(ObservableList<String> alIssue) {
+	public void setAlIssue(ObservableList<Issue> alIssue) {
 		this.alIssue = alIssue;
 	}
 
-	public void setIssue(String issue) {
+	public void setIssue(Issue issue) {
 		
 		alIssue.add(issue);
 		

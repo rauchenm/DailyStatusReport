@@ -21,17 +21,17 @@ public class UserstoryList {
 		return alUserstory;
 	}
 
-	public ObservableList<String> getAlUserstoryStr() {
-		
-		ObservableList<String> alUserstoryStr = FXCollections.observableArrayList();
-		for (int i = 0; i < alUserstory.size(); i++) {
-			
-			alUserstoryStr.add(alUserstory.get(i).toString());
-			
-		}
-		 return alUserstoryStr;
-		
-	}
+//	public ObservableList<Userstory> getAlUserstoryStr() {
+//		
+//		
+//		for (int i = 0; i < alUserstory.size(); i++) {
+//			
+//			alUserstoryStr.add(alUserstory.get(i).toString());
+//			
+//		}
+//		 return alUserstoryStr;
+//		
+//	}
 
 	public void setAlUserstory(ObservableList<Userstory> alUserstory) {
 		this.alUserstory = alUserstory;

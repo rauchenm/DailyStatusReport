@@ -17,10 +17,13 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import model.Highlight;
 import model.HighlightList;
+import model.Issue;
 import model.IssueList;
 import model.ReadFile;
 import model.Report;
+import model.ReportList;
 import model.Userstory;
 import model.UserstoryList;
 
@@ -40,7 +43,7 @@ public class ReportControl implements Initializable {
 	@FXML
 	private TextField tbHiglight;
 	@FXML
-	private ListView<String> lvHighlights;
+	private ListView<Highlight> lvHighlights;
 	@FXML
 	private Button btAddHighlight;
 
@@ -48,7 +51,7 @@ public class ReportControl implements Initializable {
 	@FXML
 	private TextField tbIssue;
 	@FXML
-	private ListView<String> lvIssues;
+	private ListView<Issue> lvIssues;
 	@FXML
 	private Button btAddIssue;
 
@@ -109,7 +112,7 @@ public class ReportControl implements Initializable {
 	@FXML
 	private void addHighlight() {
 
-		highlightList.setHighlight(tbHiglight.getText());
+		highlightList.setHighlight(new Highlight(lbReportId.getText(), tbHiglight.getText()));
 
 		for (int i = 0; i < highlightList.getSize(); i++) {
 			lvHighlights.setItems((highlightList.getAlHighlight()));
@@ -121,8 +124,8 @@ public class ReportControl implements Initializable {
 
 	@FXML
 	private void addIssue() {
-
-		issueList.setIssue(tbIssue.getText());
+		
+		issueList.setIssue(new Issue (lbReportId.getText(), tbIssue.getText()));
 
 		for (int i = 0; i < issueList.getSize(); i++) {
 			lvIssues.setItems((issueList.getAlIssue()));
@@ -138,7 +141,7 @@ public class ReportControl implements Initializable {
 		String reportName = "DSR-" + cbEntity.getSelectionModel().getSelectedItem() + "-" + dpReportDate.getValue();
 		lbReportId.setText(reportName);
 
-		Report report = new Report(dpReportDate.getValue(), lbReportId.getText(), highlightList.getAlHighlight(),
+		Report report = new Report(lbReportId.getText(), highlightList.getAlHighlight(),
 				issueList.getAlIssue(), userstoryList.getAlUserstory());
 
 		System.out.println(report.toString());
@@ -154,7 +157,7 @@ public class ReportControl implements Initializable {
 
 		calculatePerc();
 
-		Userstory us = new Userstory(tbUserstoryID.getText(), cbEntity.getSelectionModel().getSelectedItem(),
+		Userstory us = new Userstory(lbReportId.getText(), tbUserstoryID.getText(), cbEntity.getSelectionModel().getSelectedItem(),
 				cbStatus.getSelectionModel().getSelectedItem(), Integer.valueOf(tbTotalTc.getText()),
 				Integer.valueOf(tbPass.getText()), Integer.valueOf(tbFailed.getText()),
 				Integer.valueOf(tbBlocked.getText()), Integer.valueOf(tbNoRun.getText()),
@@ -162,6 +165,7 @@ public class ReportControl implements Initializable {
 				Double.valueOf(tbPassPerc.getText()), tbOutstandDef.getText(), tbComments.getText());
 
 		userstoryList.add(us);
+		System.out.println(userstoryList.getSize());
 
 		lvUserstories.setItems(userstoryList.getAlUserstory());
 		clearUserstoriesTextBoxes();
@@ -172,15 +176,15 @@ public class ReportControl implements Initializable {
 	private void readFile() {
 
 		ReadFile rf = new ReadFile();
-		// ReportList reportList = new ReportList();
+		
 		// reportList = rf.readFile();
-		ObservableList<Userstory> reportList = FXCollections.observableArrayList();
+		ReportList reportList = new ReportList();
 
 		reportList = rf.readFile();
 
-		for (int i = 0; i < reportList.size(); i++) {
+		for (int i = 0; i < reportList.getSize(); i++) {
 
-			lvReadFile.setItems(reportList);
+			lvReadFile.setItems(reportList.getReportIdList());
 		}
 
 		checkReports(reportList);
@@ -211,7 +215,6 @@ public class ReportControl implements Initializable {
 		tbPass.setText("0");
 		tbFailed.setText("0");
 		tbBlocked.setText("0");
-		;
 		tbNoRun.setText("0");
 		tbDefer.setText("0");
 		tbExePerc.setText("0.0");
@@ -221,19 +224,19 @@ public class ReportControl implements Initializable {
 
 	}
 
-	private void checkReports(ObservableList<Userstory> reportList) {
+	private void checkReports(ObservableList<Report> reportList) {
 
 		ObservableList<String> olReports = FXCollections.observableArrayList();
 		
 		for (int j = 0; j < reportList.size(); j++) {
 
 			if (olReports.isEmpty()) {
-				olReports.add(reportList.get(j).getReportId());
+				olReports.add(reportList.get(j).getReportID());
 			}
 			
-			if(olReports.get(olReports.size()-1).equals(reportList.get(j).getReportId())) {
+			if(olReports.get(olReports.size()-1).equals(reportList.get(j).getReportID())) {
 				
-			}else olReports.add(reportList.get(j).getReportId());
+			}else olReports.add(reportList.get(j).getReportID());
 		}
 
 		cbReports.setItems(olReports);
@@ -247,15 +250,17 @@ public class ReportControl implements Initializable {
 		String reportId = cbReports.getSelectionModel().getSelectedItem();
 		
 		ReadFile rf = new ReadFile();
-		ObservableList<Userstory> reportList = FXCollections.observableArrayList();
+		ReportList reportList = new ReportList();
 		ObservableList<Userstory> filteredList = FXCollections.observableArrayList();
 		
 		reportList = rf.readFile();
 		
-		for (int i = 0; i < reportList.size(); i++) {
+		for (int i = 0; i < reportList.getSize(); i++) {
 			
-			if(reportId.equals(reportList.get(i).getReportId()))
-			{filteredList.add(reportList.get(i));}
+			if(reportId.equals(reportList.getReportIdList().get(i)))
+			{
+				filteredList.add(reportList.getReportIdList());
+			} 
 			
 		} 	lvReadFile.setItems(filteredList);
 

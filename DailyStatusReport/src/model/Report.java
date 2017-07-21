@@ -1,52 +1,43 @@
 package model;
 
-import java.time.LocalDate;
-
 import javafx.collections.ObservableList;
 
 public class Report {
 
-	private LocalDate reportDate;
 	private String reportID;
-	private ObservableList<String> higlights;
-	private ObservableList<String> issues;
+	private ObservableList<Highlight> higlights;
+	private ObservableList<Issue> issues;
 	private ObservableList<Userstory> stories;
 	
 	public Report() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Report(LocalDate reportDate, String reportID, ObservableList<String> higlights, ObservableList<String> issues,
+	public Report(String reportID, ObservableList<Highlight> higlights, ObservableList<Issue> issues,
 			ObservableList<Userstory> stories) {
 		super();
-		this.reportDate = reportDate;
 		this.reportID = reportID;
 		this.higlights = higlights;
 		this.issues = issues;
 		this.stories = stories;
 	}
-	public LocalDate getReportDate() {
-		return reportDate;
-	}
-	public void setReportDate(LocalDate reportDate) {
-		this.reportDate = reportDate;
-	}
+
 	public String getReportID() {
 		return reportID;
 	}
 	public void setReportID(String reportID) {
 		this.reportID = reportID;
 	}
-	public ObservableList<String> getHiglights() {
+	public ObservableList<Highlight> getHiglights() {
 		return higlights;
 	}
-	public void setHiglights(ObservableList<String> higlights) {
+	public void setHiglights(ObservableList<Highlight> higlights) {
 		this.higlights = higlights;
 	}
-	public ObservableList<String> getIssues() {
+	public ObservableList<Issue> getIssues() {
 		return issues;
 	}
-	public void setIssues(ObservableList<String> issues) {
+	public void setIssues(ObservableList<Issue> issues) {
 		this.issues = issues;
 	}
 	public ObservableList<Userstory> getStories() {
@@ -59,7 +50,6 @@ public class Report {
 	
 		String string = 
 				"Report ID: " + reportID + "\n"
-				+ "Date: " + getReportDate() + "\n"
 				+ "Highlights: " + getHiglights() + "\n"
 				+ "Issues: " + getIssues() + "\n"
 				+ "Userstories: ";
@@ -78,7 +68,6 @@ public class Report {
 					+ stories.get(i).getTcPassPerc() + ", " 
 					+ stories.get(i).getDefects() + ", " 
 					+ stories.get(i).getComments();
-
 			;
 		}
 		

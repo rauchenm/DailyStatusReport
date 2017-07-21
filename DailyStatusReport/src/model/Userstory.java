@@ -36,24 +36,7 @@ public class Userstory {
 		this.defects = defects;
 		this.comments = comments;
 	}
-	public Userstory(String userStoryID, String entity, String status, int tcTotal, int tcPass, int tcFail,
-			int tcBlocked, int tcNoRun, int tcDefer, double tcExePerc, double tcPassPerc, String defects,
-			String comments) {
-		super();
-		this.userStoryID = userStoryID;
-		this.entity = entity;
-		this.status = status;
-		this.tcTotal = tcTotal;
-		this.tcPass = tcPass;
-		this.tcFail = tcFail;
-		this.tcBlocked = tcBlocked;
-		this.tcNoRun = tcNoRun;
-		this.tcDefer = tcDefer;
-		this.tcExePerc = tcExePerc;
-		this.tcPassPerc = tcPassPerc;
-		this.defects = defects;
-		this.comments = comments;
-	}
+
 	
 	public Userstory() {
 		super();
