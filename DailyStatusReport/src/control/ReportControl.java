@@ -29,15 +29,28 @@ import model.UserstoryList;
 
 public class ReportControl implements Initializable {
 
+	// Tab Automatic
+	@FXML
+	private ListView<String> lvReportIdAut;
+	@FXML
+	private ListView<Userstory> lvReadFile;
+	@FXML
+	private ListView<Issue> lvIssueAut;
+	@FXML
+	private ListView<Highlight> lvHighlightAut;
+	@FXML
+	private ChoiceBox<String> cbReports;
+	@FXML
+	private Button btShowReport;
+	@FXML
+	private Button btReadFile;
+
+	// Tab Manual
 	// Report Overview
 	@FXML
 	private Label lbReportId;
 	@FXML
 	private DatePicker dpReportDate;
-	@FXML
-	private ChoiceBox<String> cbReports;
-	@FXML
-	private Button btShowReport;
 
 	// Report Highlights
 	@FXML
@@ -58,8 +71,7 @@ public class ReportControl implements Initializable {
 	// Report Userstories
 	@FXML
 	private ListView<Userstory> lvUserstories;
-	@FXML
-	private ListView<Userstory> lvReadFile;
+
 	@FXML
 	private TextField tbUserstoryID;
 	@FXML
@@ -91,8 +103,6 @@ public class ReportControl implements Initializable {
 	private Button btAddUserStoryInf;
 	@FXML
 	private Button btGenerateReport;
-	@FXML
-	private Button btReadFile;
 
 	UserstoryList userstoryList = new UserstoryList();
 	IssueList issueList = new IssueList();
@@ -124,8 +134,8 @@ public class ReportControl implements Initializable {
 
 	@FXML
 	private void addIssue() {
-		
-		issueList.setIssue(new Issue (lbReportId.getText(), tbIssue.getText()));
+
+		issueList.setIssue(new Issue(lbReportId.getText(), tbIssue.getText()));
 
 		for (int i = 0; i < issueList.getSize(); i++) {
 			lvIssues.setItems((issueList.getAlIssue()));
@@ -141,8 +151,8 @@ public class ReportControl implements Initializable {
 		String reportName = "DSR-" + cbEntity.getSelectionModel().getSelectedItem() + "-" + dpReportDate.getValue();
 		lbReportId.setText(reportName);
 
-		Report report = new Report(lbReportId.getText(), highlightList.getAlHighlight(),
-				issueList.getAlIssue(), userstoryList.getAlUserstory());
+		Report report = new Report(lbReportId.getText(), highlightList.getAlHighlight(), issueList.getAlIssue(),
+				userstoryList.getAlUserstory());
 
 		System.out.println(report.toString());
 
@@ -157,12 +167,13 @@ public class ReportControl implements Initializable {
 
 		calculatePerc();
 
-		Userstory us = new Userstory(lbReportId.getText(), tbUserstoryID.getText(), cbEntity.getSelectionModel().getSelectedItem(),
-				cbStatus.getSelectionModel().getSelectedItem(), Integer.valueOf(tbTotalTc.getText()),
-				Integer.valueOf(tbPass.getText()), Integer.valueOf(tbFailed.getText()),
-				Integer.valueOf(tbBlocked.getText()), Integer.valueOf(tbNoRun.getText()),
-				Integer.valueOf(tbDefer.getText()), Double.valueOf(tbExePerc.getText()),
-				Double.valueOf(tbPassPerc.getText()), tbOutstandDef.getText(), tbComments.getText());
+		Userstory us = new Userstory(lbReportId.getText(), tbUserstoryID.getText(),
+				cbEntity.getSelectionModel().getSelectedItem(), cbStatus.getSelectionModel().getSelectedItem(),
+				Integer.valueOf(tbTotalTc.getText()), Integer.valueOf(tbPass.getText()),
+				Integer.valueOf(tbFailed.getText()), Integer.valueOf(tbBlocked.getText()),
+				Integer.valueOf(tbNoRun.getText()), Integer.valueOf(tbDefer.getText()),
+				Double.valueOf(tbExePerc.getText()), Double.valueOf(tbPassPerc.getText()), tbOutstandDef.getText(),
+				tbComments.getText());
 
 		userstoryList.add(us);
 		System.out.println(userstoryList.getSize());
@@ -176,7 +187,7 @@ public class ReportControl implements Initializable {
 	private void readFile() {
 
 		ReadFile rf = new ReadFile();
-		
+
 		// reportList = rf.readFile();
 		ReportList reportList = new ReportList();
 
@@ -184,7 +195,7 @@ public class ReportControl implements Initializable {
 
 		for (int i = 0; i < reportList.getSize(); i++) {
 
-			lvReadFile.setItems(reportList.getReportIdList());
+			lvReportIdAut.setItems(reportList.getReportIdList());
 		}
 
 		checkReports(reportList);
@@ -224,46 +235,67 @@ public class ReportControl implements Initializable {
 
 	}
 
-	private void checkReports(ObservableList<Report> reportList) {
+	private void checkReports(ReportList reportList) {
 
 		ObservableList<String> olReports = FXCollections.observableArrayList();
-		
-		for (int j = 0; j < reportList.size(); j++) {
+
+		for (int j = 0; j < reportList.getSize(); j++) {
 
 			if (olReports.isEmpty()) {
-				olReports.add(reportList.get(j).getReportID());
+				olReports.add(reportList.getReportsList().get(j).getReportID());
 			}
-			
-			if(olReports.get(olReports.size()-1).equals(reportList.get(j).getReportID())) {
-				
-			}else olReports.add(reportList.get(j).getReportID());
+
+			if (olReports.get(olReports.size() - 1).equals(reportList.getReportsList().get(j).getReportID())) {
+
+			} else
+				olReports.add(reportList.getReportsList().get(j).getReportID());
 		}
 
 		cbReports.setItems(olReports);
 	}
 
-	
 	@FXML
 	private void viewDetailsReport() {
-		
+
+		lvReportIdAut.setItems(null);
 		lvReadFile.setItems(null);
+		lvIssueAut.setItems(null);
+		lvHighlights.setItems(null);
 		String reportId = cbReports.getSelectionModel().getSelectedItem();
-		
+
 		ReadFile rf = new ReadFile();
 		ReportList reportList = new ReportList();
-		ObservableList<Userstory> filteredList = FXCollections.observableArrayList();
-		
+		ObservableList<String> filteredListReport = FXCollections.observableArrayList();
+		ObservableList<Userstory> filteredUserstories = FXCollections.observableArrayList();
+		ObservableList<Highlight> filteredHighlights = FXCollections.observableArrayList();
+		ObservableList<Issue> filteredIssuess = FXCollections.observableArrayList();
+
 		reportList = rf.readFile();
-		
+
 		for (int i = 0; i < reportList.getSize(); i++) {
 			
-			if(reportId.equals(reportList.getReportIdList().get(i)))
-			{
-				filteredList.add(reportList.getReportIdList());
-			} 
 			
-		} 	lvReadFile.setItems(filteredList);
+			if (reportId.equals(reportList.getReportsList().get(i).getReportID())) {
+				filteredListReport.add(reportList.getReportsList().get(i).getReportID());
+			}lvReportIdAut.setItems(filteredListReport);
 
+			if (reportId.equals(reportList.getReportsList().get(i).getReportID())) {
+				filteredUserstories.addAll(reportList.getReportsList().get(i).getStories());
+			} lvReadFile.setItems(filteredUserstories);
+
+			if (reportId.equals(reportList.getReportsList().get(i).getReportID())) {
+				filteredHighlights.addAll(reportList.getReportsList().get(i).getHiglights());
+			}
+			lvHighlightAut.setItems(filteredHighlights);
+			
+			if (reportId.equals(reportList.getReportsList().get(i).getReportID())) {
+				filteredIssuess.setAll(reportList.getReportsList().get(i).getIssues());
+			}
+				lvIssueAut.setItems(filteredIssuess);
+			
+			
+		}
 		
+
 	}
 }

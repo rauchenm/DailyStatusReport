@@ -15,10 +15,17 @@
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <Button fx:id="btRadFile" layoutX="407.0" layoutY="535.0" mnemonicParsing="false" onAction="#readFile" prefHeight="25.0" prefWidth="157.0" text="Read File" />
-                        <ListView fx:id="lvReadFile" layoutX="256.0" layoutY="27.0" prefHeight="482.0" prefWidth="458.0" />
+                        <ListView fx:id="lvReadFile" layoutX="257.0" layoutY="305.0" prefHeight="217.0" prefWidth="458.0" />
                         <ChoiceBox fx:id="cbReports" layoutX="28.0" layoutY="78.0" prefHeight="25.0" prefWidth="202.0" />
                         <Label layoutX="28.0" layoutY="52.0" prefHeight="17.0" prefWidth="104.0" text="Select Report" />
                         <Button fx:id="btShowReport" layoutX="28.0" layoutY="121.0" mnemonicParsing="false" onAction="#viewDetailsReport" text="Show Report" />
+                        <ListView fx:id="lvIssueAut" layoutX="489.0" layoutY="192.0" prefHeight="86.0" prefWidth="225.0" />
+                        <ListView fx:id="lvHighlightAut" layoutX="256.0" layoutY="193.0" prefHeight="86.0" prefWidth="225.0" />
+                        <Label layoutX="489.0" layoutY="175.0" text="Issues" />
+                        <Label layoutX="256.0" layoutY="176.0" text="Highlights" />
+                        <ListView fx:id="lvReportIdAut" layoutX="257.0" layoutY="30.0" prefHeight="132.0" prefWidth="458.0" />
+                        <Label layoutX="258.0" layoutY="14.0" text="Report ID" />
+                        <Label layoutX="256.0" layoutY="288.0" text="Usersories" />
                      </children>
                   </AnchorPane>
             </content>

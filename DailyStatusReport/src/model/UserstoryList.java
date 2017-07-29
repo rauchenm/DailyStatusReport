@@ -14,13 +14,14 @@ public class UserstoryList {
 	public UserstoryList(ObservableList<Userstory> alUserstory) {
 		super();
 
-		this.alUserstory = alUserstory;
+		this.alUserstory = (ObservableList<Userstory>) alUserstory;
 	}
 	
 	public ObservableList<Userstory> getAlUserstory() {
 		return alUserstory;
 	}
-
+ 
+	
 //	public ObservableList<Userstory> getAlUserstoryStr() {
 //		
 //		
@@ -33,6 +34,7 @@ public class UserstoryList {
 //		
 //	}
 
+
 	public void setAlUserstory(ObservableList<Userstory> alUserstory) {
 		this.alUserstory = alUserstory;
 	}
@@ -42,11 +44,10 @@ public class UserstoryList {
 		alUserstory.add(us);
 		
 	}
-	
-	public int getSize(){
-		
+
+	public int getSize() {
+		// TODO Auto-generated method stub
 		return alUserstory.size();
-		
 	}
 
 	

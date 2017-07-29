@@ -35,6 +35,12 @@ public class HighlightList {
 	
 		return alHighlight.size();
 	}
+
+	public void add(Highlight hl) {
+
+		alHighlight.add(hl);
+		
+	}
 	
 	
 

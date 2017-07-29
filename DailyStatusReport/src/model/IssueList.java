@@ -35,6 +35,12 @@ public class IssueList {
 		return alIssue.size();
 		
 	}
+
+	public void add(Issue iss) {
+		
+		alIssue.add(iss);
+		
+	}
 	
 	
 }

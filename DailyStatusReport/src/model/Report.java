@@ -9,11 +9,13 @@ public class Report {
 	private ObservableList<Issue> issues;
 	private ObservableList<Userstory> stories;
 	
-	public Report() {
+
+		public Report() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Report(String reportID, ObservableList<Highlight> higlights, ObservableList<Issue> issues,
+
+		public Report(String reportID, ObservableList<Highlight> higlights, ObservableList<Issue> issues,
 			ObservableList<Userstory> stories) {
 		super();
 		this.reportID = reportID;
@@ -22,31 +24,39 @@ public class Report {
 		this.stories = stories;
 	}
 
-	public String getReportID() {
+		public String getReportID() {
 		return reportID;
 	}
+
 	public void setReportID(String reportID) {
 		this.reportID = reportID;
 	}
+
 	public ObservableList<Highlight> getHiglights() {
 		return higlights;
 	}
+
 	public void setHiglights(ObservableList<Highlight> higlights) {
 		this.higlights = higlights;
 	}
+
 	public ObservableList<Issue> getIssues() {
 		return issues;
 	}
+
 	public void setIssues(ObservableList<Issue> issues) {
 		this.issues = issues;
 	}
+
 	public ObservableList<Userstory> getStories() {
 		return stories;
 	}
+
 	public void setStories(ObservableList<Userstory> stories) {
 		this.stories = stories;
 	}
-	public String toString(){
+
+		public String toString(){
 	
 		String string = 
 				"Report ID: " + reportID + "\n"
@@ -55,7 +65,7 @@ public class Report {
 				+ "Userstories: ";
 		
 		for (int i = 0; i < stories.size(); i++) {
-			string = string + stories.get(i).getUserStoryID() + ", " 
+			string = string + stories.get(i) + ", " 
 					+ stories.get(i).getEntity() + ", " 
 					+ stories.get(i).getStatus() + ", " 
 					+ stories.get(i).getTcTotal() + ", " 
