@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 /control/
 /view/
 /model/
+=======
+/model/
+/control/
+/view/
+>>>>>>> branch 'master' of https://github.com/rauchenm/maracon

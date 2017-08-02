@@ -10,44 +10,44 @@ import javafx.collections.ObservableList;
 
 public class ReadFile {
 
-	//Files aus denen eingelesen wird...
+	// Files aus denen eingelesen wird...
 	private File fileUs;
 	private File fileHighLight;
 	private File fileIssues;
 
-	//Pfade zu den Files
-//	private String pathUserStories = "D:\\Privat\\DSR_Userstories.txt";
-//	private String pathHighlights = "D:\\Privat\\DSR_highlights.txt";
-//	private String pathIssues = "D:\\Privat\\DSR_Issues.txt";
-	
+	// Pfade zu den Files
+	// private String pathUserStories = "D:\\Privat\\DSR_Userstories.txt";
+	// private String pathHighlights = "D:\\Privat\\DSR_highlights.txt";
+	// private String pathIssues = "D:\\Privat\\DSR_Issues.txt";
+
 	private String pathUserStories = "C:\\Users\\Markus\\Downloads\\DSR_Reports.txt";
 	private String pathHighlights = "C:\\Users\\Markus\\Downloads\\DSR_Highlights.txt";
 	private String pathIssues = "C:\\Users\\Markus\\Downloads\\DSR_Issues.txt";
-	
+
 	private ReportList reportList = new ReportList();
 
 	public ReportList readFile() {
-		
+
 		ObservableList<Highlight> hlList = FXCollections.observableArrayList();
-		ObservableList<Issue> issList= FXCollections.observableArrayList();
+		ObservableList<Issue> issList = FXCollections.observableArrayList();
 		ObservableList<Userstory> usList = FXCollections.observableArrayList();
-		
+
 		fileUs = new File(pathUserStories);
 		fileHighLight = new File(pathHighlights);
 		fileIssues = new File(pathIssues);
-		
+
 		String line = "";
 		String[] lineUs;
 		String[] lineHl;
 		String[] lineIss;
-		
+
 		BufferedReader reader;
-		
-		//Read Userstoryies aus files
+
+		// Read Userstoryies aus files
 		try {
 			reader = new BufferedReader(new FileReader(fileUs));
-			 while ((line = reader.readLine()) != null) {
-				 if(!line.contains("ID")) {
+			while ((line = reader.readLine()) != null) {
+				if (!line.contains("ID")) {
 					Userstory us = new Userstory();
 					lineUs = line.split(";");
 					us.setReportId(lineUs[1].trim());
@@ -62,49 +62,49 @@ public class ReadFile {
 					us.setTcDefer(Integer.valueOf(lineUs[10]));
 					us.setTcExePerc(Integer.valueOf(lineUs[11]));
 					us.setComments(lineUs[12].trim());
-					usList.add(us);}
-			 }
-			 reader.close();
+					usList.add(us);
+				}
+			}
+			reader.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		//Read Highlight aus files
+		// Read Highlight aus files
 		try {
 			reader = new BufferedReader(new FileReader(fileHighLight));
-			 while ((line = reader.readLine()) != null) {
-					Highlight hl = new Highlight();
-					lineHl = line.split(";");
-					if(!line.contains("ID")) {
+			while ((line = reader.readLine()) != null) {
+				Highlight hl = new Highlight();
+				lineHl = line.split(";");
+				if (!line.contains("ID")) {
 					hl.setReportId(lineHl[1].trim());
 					hl.setHighlight(lineHl[2].trim());
-					if(hlList.isEmpty()) {hlList.add(hl);}
-	                if(true) {}
-	                else hlList.add(hl);
-					}
-			 }
-			 reader.close();
+					hlList.add(hl);
+				}
+			}
+			reader.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		//Read Issues aus files
+
+		// Read Issues aus files
 		try {
 			reader = new BufferedReader(new FileReader(fileIssues));
-			 while ((line = reader.readLine()) != null) {
-					Issue iss = new Issue();
-					lineIss = line.split(";");
-					if(!line.contains("ID")) {
+			while ((line = reader.readLine()) != null) {
+				Issue iss = new Issue();
+				lineIss = line.split(";");
+				if (!line.contains("ID")) {
 					iss.setReportId(lineIss[1].trim());
 					iss.setIssue(lineIss[2].trim());
-	                issList.add(iss);}          
-			 }
-			 reader.close();
+					issList.add(iss);
+				}
+			}
+			reader.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	
+
 		for (int i = 0; i < usList.size(); i++) {
-			
+
 			Report report = new Report();
 			report.setHiglights(hlList);
 			report.setIssues(issList);
@@ -112,11 +112,9 @@ public class ReadFile {
 			report.setStories(usList);
 			reportList.addReport(report);
 		}
-		
+
 		return reportList;
-		
+
 	}
-
-
 
 }

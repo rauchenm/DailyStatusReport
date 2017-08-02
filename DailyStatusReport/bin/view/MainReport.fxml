@@ -79,6 +79,18 @@
                   </AnchorPane>
             </content>
           </Tab>
+            <Tab text="Weekly Report">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <DatePicker fx:id="dpWeek" layoutX="24.0" layoutY="50.0" />
+                        <ListView fx:id="lvWeeklyReport" layoutX="232.0" layoutY="42.0" prefHeight="533.0" prefWidth="471.0" />
+                        <ChoiceBox fx:id="cbEntitiyRep" layoutX="24.0" layoutY="106.0" prefWidth="150.0" />
+                        <Button fx:id="btReadReportData" layoutX="24.0" layoutY="169.0" mnemonicParsing="false" onAction="#readReportData" prefHeight="25.0" prefWidth="142.0" text="Read Report Data" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
         </tabs>
       </TabPane>
    </children>

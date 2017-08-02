@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.temporal.IsoFields;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -22,6 +24,7 @@ import model.HighlightList;
 import model.Issue;
 import model.IssueList;
 import model.ReadFile;
+import model.ReadReport;
 import model.Report;
 import model.ReportList;
 import model.Userstory;
@@ -103,6 +106,17 @@ public class ReportControl implements Initializable {
 	private Button btAddUserStoryInf;
 	@FXML
 	private Button btGenerateReport;
+	
+	// Tab Weekly Report
+	@FXML
+	private ListView<Userstory> lvWeeklyReport;
+	@FXML
+	private	ChoiceBox<String> cbEntitiyRep;
+	@FXML
+	private	DatePicker dpWeek;
+	@FXML
+	private Button	btReadReportData;
+	
 
 	UserstoryList userstoryList = new UserstoryList();
 	IssueList issueList = new IssueList();
@@ -110,12 +124,14 @@ public class ReportControl implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-
+		String[] entities = {"COM", "GIP", "LIF", "CLA", "PoS", "INT"};
 		cbStatus.setItems(FXCollections.observableArrayList("Not Started", "Scripting - InProgress", "BA Review",
 				"Rework - In Progress", "Testing - In Progress", "Executed with Defects", "Exploratory / SME Testing",
 				"Accepted"));
 
-		cbEntity.setItems(FXCollections.observableArrayList("COM", "GIP", "LIF", "CLA", "PoS", "INT"));
+		cbEntity.setItems(FXCollections.observableArrayList(entities));
+		
+		cbEntitiyRep.setItems(FXCollections.observableArrayList(entities));
 
 	}
 
@@ -298,4 +314,20 @@ public class ReportControl implements Initializable {
 		
 
 	}
+	
+	@FXML 
+	private void readReportData() {
+		
+		ReadReport report = new ReadReport();
+	
+		LocalDate localDate = dpWeek.getValue(); // assuming we picked 18 September 2014
+		int weekNumber = localDate.get(IsoFields.WEEK_OF_WEEK_BASED_YEAR);
+		
+		lvWeeklyReport.setItems(report.readReports(String.valueOf(dpWeek.getValue()), weekNumber));
+		
+	}
+
 }
+	
+
+
