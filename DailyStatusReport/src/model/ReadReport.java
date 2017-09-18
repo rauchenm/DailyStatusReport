@@ -17,7 +17,8 @@ public class ReadReport {
 	// Pfade zu den Files
 	// private String pathUserStories = "D:\\Privat\\DSR_Userstories.txt";
 
-	private String pathReportPrep = "C:\\Users\\Markus\\Downloads\\ReportPrepGIP.txt";
+//	private String pathReportPrep = "C:\\Users\\Markus\\Downloads\\ReportPrepGIP.txt";
+	private String pathReportPrep = "C:\\Users\\07120\\Downloads\\ReportPrepGIP.txt";
 
 	ObservableList<Userstory> olUserstories = FXCollections.observableArrayList();
 	String date = "";
@@ -40,7 +41,8 @@ public class ReadReport {
 				lineData = line.split(";");
 				if(lineData[2].equals(String.valueOf(weekNumber))) {
 					//WEITER MIT MZIMP usw...
-					
+					System.out.println(line);
+					reportData.add(line);
 				}
 			}
 		}
@@ -48,9 +50,22 @@ public class ReadReport {
 	} catch (IOException e) {
 		e.printStackTrace();
 	}
+	
+	lineData=null;
 	for (int i = 0; i < reportData.size(); i++) {
 
-			System.out.println(reportData.get(i));
+		lineData = reportData.get(i).split(";");
+		
+		for (int j = 0; j < reportData.size(); j++) {
+			
+				if(reportData.get(i).contains(lineData[3]) && reportData.get(i).contains(lineData[1])) {
+					
+					
+					
+				}
+			
+		}
+	
 	}
 
 	return olUserstories;
