@@ -38,7 +38,9 @@ public class ReadReport {
 		BufferedReader br = new BufferedReader(new FileReader(fileData));
 		while ((line = br.readLine()) != null) {
 			if (!line.contains("ID")) {
+				
 				lineData = line.split(";");
+				
 				if(lineData[2].equals(String.valueOf(weekNumber))) {
 					//WEITER MIT MZIMP usw...
 					System.out.println(line);

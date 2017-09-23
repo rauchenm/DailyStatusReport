@@ -30,7 +30,7 @@ public class ReportList {
 		
 	}
 	
-	
+
 	public ObservableList<String> getReportIdList(){
 		ObservableList<String> reportIdList = FXCollections.observableArrayList();
 		for (int j = 0; j < reportsList.size(); j++) {

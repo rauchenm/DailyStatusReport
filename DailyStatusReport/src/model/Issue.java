@@ -28,6 +28,12 @@ public class Issue {
 		this.issue = issue;
 	}
 	
+	public String toString() {
+		
+		String string = "ReportId: " + reportId + ", Issue: " + issue + ";";
+		
+		return string;
+	}
 	
 
 }

@@ -208,9 +208,11 @@ public class ReportControl implements Initializable {
 		ReportList reportList = new ReportList();
 
 		reportList = rf.readFile();
-
+		
+		
+		
 		for (int i = 0; i < reportList.getSize(); i++) {
-
+			
 			lvReportIdAut.setItems(reportList.getReportIdList());
 		}
 
@@ -257,16 +259,13 @@ public class ReportControl implements Initializable {
 
 		for (int j = 0; j < reportList.getSize(); j++) {
 
-			if (olReports.isEmpty()) {
-				olReports.add(reportList.getReportsList().get(j).getReportID());
-			}
-
-			if (olReports.get(olReports.size() - 1).equals(reportList.getReportsList().get(j).getReportID())) {
-
-			} else
-				olReports.add(reportList.getReportsList().get(j).getReportID());
-		}
-
+			if(j==0) 
+			{olReports.add(reportList.getReportIdList().get(j));}
+			
+			if(j >=1 && !olReports.get(olReports.size()-1).equals(reportList.getReportIdList().get(j))){
+				olReports.add(reportList.getReportIdList().get(j));}
+			}	
+	
 		cbReports.setItems(olReports);
 	}
 
@@ -293,21 +292,19 @@ public class ReportControl implements Initializable {
 			
 			if (reportId.equals(reportList.getReportsList().get(i).getReportID())) {
 				filteredListReport.add(reportList.getReportsList().get(i).getReportID());
-			}lvReportIdAut.setItems(filteredListReport);
+			} lvReportIdAut.setItems(filteredListReport);
 
 			if (reportId.equals(reportList.getReportsList().get(i).getReportID())) {
-				filteredUserstories.addAll(reportList.getReportsList().get(i).getStories());
+				filteredUserstories.add(reportList.getReportsList().get(i).getStories().get(i));
 			} lvReadFile.setItems(filteredUserstories);
 
 			if (reportId.equals(reportList.getReportsList().get(i).getReportID())) {
-				filteredHighlights.addAll(reportList.getReportsList().get(i).getHiglights());
-			}
-			lvHighlightAut.setItems(filteredHighlights);
+				filteredHighlights.add(reportList.getReportsList().get(i).getHiglights().get(i));
+			} lvHighlightAut.setItems(filteredHighlights);
 			
 			if (reportId.equals(reportList.getReportsList().get(i).getReportID())) {
-				filteredIssuess.setAll(reportList.getReportsList().get(i).getIssues());
-			}
-				lvIssueAut.setItems(filteredIssuess);
+				filteredIssuess.add(reportList.getReportsList().get(i).getIssues().get(i));
+			} lvIssueAut.setItems(filteredIssuess);
 			
 			
 		}

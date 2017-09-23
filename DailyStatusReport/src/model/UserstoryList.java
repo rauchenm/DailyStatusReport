@@ -20,7 +20,7 @@ public class UserstoryList {
 	public ObservableList<Userstory> getAlUserstory() {
 		return alUserstory;
 	}
- 
+	
 	
 //	public ObservableList<Userstory> getAlUserstoryStr() {
 //		

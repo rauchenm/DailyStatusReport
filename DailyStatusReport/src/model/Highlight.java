@@ -31,7 +31,12 @@ public class Highlight {
 		this.highlight = highlight;
 	}
 	
-	
+	public String toString(){
+		
+		String string = "ReportId: " + reportId + ", Highlight: " + highlight + ";";
+		
+		return string;
+	}
 	
 	
 }
