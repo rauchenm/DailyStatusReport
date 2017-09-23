@@ -289,7 +289,6 @@ public class ReportControl implements Initializable {
 
 		for (int i = 0; i < reportList.getSize(); i++) {
 			
-			
 			if (reportId.equals(reportList.getReportsList().get(i).getReportID())) {
 				filteredListReport.add(reportList.getReportsList().get(i).getReportID());
 			} lvReportIdAut.setItems(filteredListReport);
@@ -299,16 +298,16 @@ public class ReportControl implements Initializable {
 			} lvReadFile.setItems(filteredUserstories);
 
 			if (reportId.equals(reportList.getReportsList().get(i).getReportID())) {
-				filteredHighlights.add(reportList.getReportsList().get(i).getHiglights().get(i));
+				filteredHighlights.addAll(reportList.getReportsList().get(i).getHiglights().get(i));
 			} lvHighlightAut.setItems(filteredHighlights);
 			
 			if (reportId.equals(reportList.getReportsList().get(i).getReportID())) {
 				filteredIssuess.add(reportList.getReportsList().get(i).getIssues().get(i));
 			} lvIssueAut.setItems(filteredIssuess);
 			
-			
 		}
 		
+
 
 	}
 	

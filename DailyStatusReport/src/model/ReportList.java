@@ -50,5 +50,14 @@ public class ReportList {
 		return reportsList.size();
 	}
 	
+//	public String toString(int i) {
+//		
+//		String string = "Report ID: " + reportsList.get(i).getReportID() + 
+//						", Stories: " + reportsList.get(i).getStories().get(i) +
+//						", Highlights: " + reportsList.get(i).getHiglights().get(i) +
+//						", Issues: " + reportsList.get(i).getIssues().get(i);;
+//				
+//		return string;		
+//	}
 
 }
