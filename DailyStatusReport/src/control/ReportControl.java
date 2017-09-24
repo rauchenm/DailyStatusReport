@@ -334,11 +334,11 @@ public class ReportControl implements Initializable {
 	
 	@FXML
 	private void saveReport() {
-		File report;
+		File report = new File("C:\\Users\\Markus\\Downloads\\Report_");
 		if(rbHttp.isSelected()) {
 		report = new File("C:\\Users\\Markus\\Downloads\\Report_"+ cbReports.getSelectionModel().getSelectedItem() +".html");}
-		else 
-		report = new File("C:\\Users\\Markus\\Downloads\\Report_"+ cbReports.getSelectionModel().getSelectedItem() +".txt");
+		if(rbText.isSelected()) {
+		report = new File("C:\\Users\\Markus\\Downloads\\Report_"+ cbReports.getSelectionModel().getSelectedItem() +".txt");}
 		
 		FileWriter fw;
 		try {
