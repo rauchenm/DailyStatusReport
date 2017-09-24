@@ -30,6 +30,11 @@ public class ReportList {
 		
 	}
 	
+	public Report getReport(int index) {
+		
+		return reportsList.get(index);
+	
+	}
 
 	public ObservableList<String> getReportIdList(){
 		ObservableList<String> reportIdList = FXCollections.observableArrayList();
@@ -50,14 +55,16 @@ public class ReportList {
 		return reportsList.size();
 	}
 	
-//	public String toString(int i) {
-//		
-//		String string = "Report ID: " + reportsList.get(i).getReportID() + 
-//						", Stories: " + reportsList.get(i).getStories().get(i) +
-//						", Highlights: " + reportsList.get(i).getHiglights().get(i) +
-//						", Issues: " + reportsList.get(i).getIssues().get(i);;
-//				
-//		return string;		
-//	}
+	public String toString() {
+
+		Report report = new Report();
+		String string = "";
+		
+		for (int i = 0; i < reportsList.size(); i++) {
+			report = reportsList.get(i);
+			string = string + report.toString() + "\n";
+		}
+		return string;
+	}
 
 }

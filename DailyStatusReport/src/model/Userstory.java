@@ -157,7 +157,8 @@ public class Userstory {
 	public String toString() {
 		
 		String string = 
-				"UserStory ID: " + getUserStoryID() + " , "
+				//"Report ID: " + getReportId() + ", " +
+				 "US-ID: " + getUserStoryID() + " , "
 				+ "Entity: " + getEntity()+ " , "
 				+ "Status: " + getStatus() + " , "
 				+ "TotalTC: " + getTcTotal() + " , "
@@ -169,7 +170,7 @@ public class Userstory {
 				+ "Perc Exe: " + getTcExePerc()+ " , "
 				+ "Perc Pass: " + getTcPassPerc() + " , "
 				+ "Outstanding Defects: " + getDefects()+ " , "
-				+ "Comments: " + getComments() + "\n";
+				+ "Comments: " + getComments();
 		
 		return string;
 	}

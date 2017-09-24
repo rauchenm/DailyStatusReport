@@ -33,7 +33,7 @@ public class Highlight {
 	
 	public String toString(){
 		
-		String string = "ReportId: " + reportId + ", Highlight: " + highlight + ";";
+		String string =  "HL: " + highlight + ";";
 		
 		return string;
 	}

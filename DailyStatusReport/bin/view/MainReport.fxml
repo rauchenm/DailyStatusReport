@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.web.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
@@ -14,18 +15,23 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="btRadFile" layoutX="407.0" layoutY="535.0" mnemonicParsing="false" onAction="#readFile" prefHeight="25.0" prefWidth="157.0" text="Read File" />
-                        <ListView fx:id="lvReadFile" layoutX="257.0" layoutY="305.0" prefHeight="217.0" prefWidth="458.0" />
-                        <ChoiceBox fx:id="cbReports" layoutX="28.0" layoutY="78.0" prefHeight="25.0" prefWidth="202.0" />
-                        <Label layoutX="28.0" layoutY="52.0" prefHeight="17.0" prefWidth="104.0" text="Select Report" />
-                        <Button fx:id="btShowReport" layoutX="28.0" layoutY="121.0" mnemonicParsing="false" onAction="#viewDetailsReport" text="Show Report" />
-                        <ListView fx:id="lvIssueAut" layoutX="489.0" layoutY="192.0" prefHeight="86.0" prefWidth="225.0" />
-                        <ListView fx:id="lvHighlightAut" layoutX="256.0" layoutY="193.0" prefHeight="86.0" prefWidth="225.0" />
-                        <Label layoutX="489.0" layoutY="175.0" text="Issues" />
-                        <Label layoutX="256.0" layoutY="176.0" text="Highlights" />
-                        <ListView fx:id="lvReportIdAut" layoutX="257.0" layoutY="30.0" prefHeight="132.0" prefWidth="458.0" />
+                        <Button fx:id="btRadFile" layoutX="408.0" layoutY="564.0" mnemonicParsing="false" onAction="#readFile" prefHeight="25.0" prefWidth="157.0" text="Read File" />
+                        <ListView fx:id="lvReadFile" layoutX="257.0" layoutY="340.0" prefHeight="214.0" prefWidth="458.0" />
+                        <ChoiceBox fx:id="cbReports" layoutX="29.0" layoutY="47.0" prefHeight="25.0" prefWidth="202.0" />
+                        <Label layoutX="28.0" layoutY="23.0" prefHeight="17.0" prefWidth="104.0" text="Select Report" />
+                        <Button fx:id="btShowReport" layoutX="29.0" layoutY="91.0" mnemonicParsing="false" onAction="#viewDetailsReport" text="Show Report" />
+                        <ListView fx:id="lvIssueAut" layoutX="489.0" layoutY="210.0" prefHeight="97.0" prefWidth="225.0" />
+                        <ListView fx:id="lvHighlightAut" layoutX="255.0" layoutY="210.0" prefHeight="97.0" prefWidth="225.0" />
+                        <Label layoutX="489.0" layoutY="187.0" text="Issues" />
+                        <Label layoutX="256.0" layoutY="186.0" text="Highlights" />
+                        <ListView fx:id="lvReportIdAut" layoutX="257.0" layoutY="30.0" prefHeight="141.0" prefWidth="458.0" />
                         <Label layoutX="258.0" layoutY="14.0" text="Report ID" />
-                        <Label layoutX="256.0" layoutY="288.0" text="Usersories" />
+                        <Label layoutX="258.0" layoutY="315.0" text="Usersories" />
+                        <RadioButton fx:id="rbHttp" layoutX="132.0" layoutY="83.0" mnemonicParsing="false" selected="true" text="HTTP Report" />
+                        <RadioButton fx:id="rbText" layoutX="132.0" layoutY="107.0" mnemonicParsing="false" text="TEXT Report" />
+                        <TextArea fx:id="wvReport" layoutX="13.0" layoutY="171.0" prefHeight="382.0" prefWidth="235.0" />
+                        <Label layoutX="14.0" layoutY="147.0" text="Report" />
+                        <Button fx:id="btSaveReport" layoutX="80.0" layoutY="564.0" mnemonicParsing="false" onAction="#saveReport" prefHeight="25.0" prefWidth="94.0" text="Save Report" />
                      </children>
                   </AnchorPane>
             </content>

@@ -13,11 +13,15 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import model.Highlight;
 import model.HighlightList;
@@ -47,7 +51,14 @@ public class ReportControl implements Initializable {
 	private Button btShowReport;
 	@FXML
 	private Button btReadFile;
-
+	@FXML 
+	private RadioButton rbHttp;
+	@FXML 
+	private RadioButton rbText;
+	@FXML
+	private TextArea wvReport;
+	@FXML
+	private Button btSaveReport;
 	// Tab Manual
 	// Report Overview
 	@FXML
@@ -106,17 +117,16 @@ public class ReportControl implements Initializable {
 	private Button btAddUserStoryInf;
 	@FXML
 	private Button btGenerateReport;
-	
+
 	// Tab Weekly Report
 	@FXML
 	private ListView<Userstory> lvWeeklyReport;
 	@FXML
-	private	ChoiceBox<String> cbEntitiyRep;
+	private ChoiceBox<String> cbEntitiyRep;
 	@FXML
-	private	DatePicker dpWeek;
+	private DatePicker dpWeek;
 	@FXML
-	private Button	btReadReportData;
-	
+	private Button btReadReportData;
 
 	UserstoryList userstoryList = new UserstoryList();
 	IssueList issueList = new IssueList();
@@ -124,13 +134,13 @@ public class ReportControl implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		String[] entities = {"COM", "GIP", "LIF", "CLA", "PoS", "INT"};
+		String[] entities = { "COM", "GIP", "LIF", "CLA", "PoS", "INT" };
 		cbStatus.setItems(FXCollections.observableArrayList("Not Started", "Scripting - InProgress", "BA Review",
 				"Rework - In Progress", "Testing - In Progress", "Executed with Defects", "Exploratory / SME Testing",
 				"Accepted"));
 
 		cbEntity.setItems(FXCollections.observableArrayList(entities));
-		
+
 		cbEntitiyRep.setItems(FXCollections.observableArrayList(entities));
 
 	}
@@ -177,6 +187,7 @@ public class ReportControl implements Initializable {
 		writer.write(report.toHttp());
 		writer.close();
 	}
+	
 
 	@FXML
 	private void addUserstoryInf() {
@@ -203,20 +214,16 @@ public class ReportControl implements Initializable {
 	private void readFile() {
 
 		ReadFile rf = new ReadFile();
-
-		// reportList = rf.readFile();
 		ReportList reportList = new ReportList();
 
 		reportList = rf.readFile();
-		
-		
-		
-		for (int i = 0; i < reportList.getSize(); i++) {
-			
-			lvReportIdAut.setItems(reportList.getReportIdList());
-		}
 
 		checkReports(reportList);
+
+		for (int i = 0; i < reportList.getSize(); i++) {
+
+			lvReportIdAut.setItems(reportList.getReportIdList());
+		}
 
 	}
 
@@ -259,13 +266,15 @@ public class ReportControl implements Initializable {
 
 		for (int j = 0; j < reportList.getSize(); j++) {
 
-			if(j==0) 
-			{olReports.add(reportList.getReportIdList().get(j));}
-			
-			if(j >=1 && !olReports.get(olReports.size()-1).equals(reportList.getReportIdList().get(j))){
-				olReports.add(reportList.getReportIdList().get(j));}
-			}	
-	
+			if (j == 0) {
+				olReports.add(reportList.getReportIdList().get(j));
+			}
+
+			if (j >= 1 && !olReports.get(olReports.size() - 1).equals(reportList.getReportIdList().get(j))) {
+				olReports.add(reportList.getReportIdList().get(j));
+			}
+		}
+
 		cbReports.setItems(olReports);
 	}
 
@@ -275,55 +284,80 @@ public class ReportControl implements Initializable {
 		lvReportIdAut.setItems(null);
 		lvReadFile.setItems(null);
 		lvIssueAut.setItems(null);
-		lvHighlights.setItems(null);
+		lvHighlightAut.setItems(null);
+
 		String reportId = cbReports.getSelectionModel().getSelectedItem();
-
+		ObservableList<String> ListReportId = FXCollections.observableArrayList();
+		ListReportId.add(reportId);
+		
 		ReadFile rf = new ReadFile();
-		ReportList reportList = new ReportList();
-		ObservableList<String> filteredListReport = FXCollections.observableArrayList();
-		ObservableList<Userstory> filteredUserstories = FXCollections.observableArrayList();
-		ObservableList<Highlight> filteredHighlights = FXCollections.observableArrayList();
-		ObservableList<Issue> filteredIssuess = FXCollections.observableArrayList();
 
+		ReportList reportList = new ReportList();
 		reportList = rf.readFile();
 
+		Report report = new Report();
+
+		report.setReportID(reportId);
+
 		for (int i = 0; i < reportList.getSize(); i++) {
-			
-			if (reportId.equals(reportList.getReportsList().get(i).getReportID())) {
-				filteredListReport.add(reportList.getReportsList().get(i).getReportID());
-			} lvReportIdAut.setItems(filteredListReport);
 
-			if (reportId.equals(reportList.getReportsList().get(i).getReportID())) {
-				filteredUserstories.add(reportList.getReportsList().get(i).getStories().get(i));
-			} lvReadFile.setItems(filteredUserstories);
+			if (report.getReportID().equals(reportList.getReport(i).getReportID())) {
 
-			if (reportId.equals(reportList.getReportsList().get(i).getReportID())) {
-				filteredHighlights.addAll(reportList.getReportsList().get(i).getHiglights().get(i));
-			} lvHighlightAut.setItems(filteredHighlights);
-			
-			if (reportId.equals(reportList.getReportsList().get(i).getReportID())) {
-				filteredIssuess.add(reportList.getReportsList().get(i).getIssues().get(i));
-			} lvIssueAut.setItems(filteredIssuess);
-			
+				report.setStories(reportList.getReport(i).getStories());
+				report.setHiglights(reportList.getReport(i).getHiglights());
+				report.setIssues(reportList.getReport(i).getIssues());
+			}
+
 		}
 		
+		lvReportIdAut.setItems(ListReportId);
+		lvReadFile.setItems(report.getStories());
+		lvHighlightAut.setItems(report.getHiglights());
+		lvIssueAut.setItems(report.getIssues());	
+		
+		if(rbHttp.isSelected()) {wvReport.setText(report.toHttp());}
+		if(rbText.isSelected()) {wvReport.setText(report.toString());}
 
+	}
+
+	@FXML
+	private void readReportData() {
+
+		ReadReport report = new ReadReport();
+
+		LocalDate localDate = dpWeek.getValue(); // assuming we picked 18 September 2014
+		int weekNumber = localDate.get(IsoFields.WEEK_OF_WEEK_BASED_YEAR);
+
+		lvWeeklyReport.setItems(report.readReports(String.valueOf(dpWeek.getValue()), weekNumber));
 
 	}
 	
-	@FXML 
-	private void readReportData() {
+	@FXML
+	private void saveReport() {
+		File report;
+		if(rbHttp.isSelected()) {
+		report = new File("C:\\Users\\Markus\\Downloads\\Report_"+ cbReports.getSelectionModel().getSelectedItem() +".html");}
+		else 
+		report = new File("C:\\Users\\Markus\\Downloads\\Report_"+ cbReports.getSelectionModel().getSelectedItem() +".txt");
 		
-		ReadReport report = new ReadReport();
-	
-		LocalDate localDate = dpWeek.getValue(); // assuming we picked 18 September 2014
-		int weekNumber = localDate.get(IsoFields.WEEK_OF_WEEK_BASED_YEAR);
+		FileWriter fw;
+		try {
+			fw = new FileWriter(report);
+			fw.write(wvReport.getText());
+			fw.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
 		
-		lvWeeklyReport.setItems(report.readReports(String.valueOf(dpWeek.getValue()), weekNumber));
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Information Dialog");
+		alert.setHeaderText("Information!");
+		alert.setContentText("File Saved successfully.");
+
+		alert.showAndWait();
+
 		
 	}
 
 }
-	
-
-

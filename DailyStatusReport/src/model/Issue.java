@@ -30,7 +30,7 @@ public class Issue {
 	
 	public String toString() {
 		
-		String string = "ReportId: " + reportId + ", Issue: " + issue + ";";
+		String string = "ISS: " + issue + ";";
 		
 		return string;
 	}
