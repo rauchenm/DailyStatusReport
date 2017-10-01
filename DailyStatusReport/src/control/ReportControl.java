@@ -66,7 +66,7 @@ public class ReportControl implements Initializable {
 	@FXML
 	private DatePicker dpReportDate;
 
-	// Report Highlights
+	// Report Highlights 
 	@FXML
 	private TextField tbHiglight;
 	@FXML
