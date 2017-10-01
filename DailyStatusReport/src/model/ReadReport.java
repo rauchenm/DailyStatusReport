@@ -10,21 +10,21 @@ import javafx.collections.ObservableList;
 
 public class ReadReport {
 	
-	
-	// Files aus denen eingelesen wird...
+	//Liest die wöchentlichen Reports ein
+	//Defintiion der Files aus denen ausgelesen wird...
 	private File fileData;
 	
 	// Pfade zu den Files
 	// private String pathUserStories = "D:\\Privat\\DSR_Userstories.txt";
 
-//	private String pathReportPrep = "C:\\Users\\Markus\\Downloads\\ReportPrepGIP.txt";
-	private String pathReportPrep = "C:\\Users\\07120\\Downloads\\ReportPrepGIP.txt";
+    private String pathReportPrep = "C:\\Users\\Markus\\Downloads\\ReportPrepGIP.txt";
+//	private String pathReportPrep = "C:\\Users\\07120\\Downloads\\ReportPrepGIP.txt";
 
-	ObservableList<Userstory> olUserstories = FXCollections.observableArrayList();
+	ObservableList<String> olUserstories = FXCollections.observableArrayList();
 	String date = "";
 	int calWeek = 0;
 	
-	public ObservableList<Userstory> readReports(String date, int weekNumber) {
+	public ObservableList<String> readReports(String date, int weekNumber) {
 	
 		fileData = new File(pathReportPrep);
 		this.date = date;
@@ -45,6 +45,7 @@ public class ReadReport {
 					//WEITER MIT MZIMP usw...
 					System.out.println(line);
 					reportData.add(line);
+					
 				}
 			}
 		}
@@ -61,15 +62,12 @@ public class ReadReport {
 		for (int j = 0; j < reportData.size(); j++) {
 			
 				if(reportData.get(i).contains(lineData[3]) && reportData.get(i).contains(lineData[1])) {
-					
-					
-					
 				}
 			
 		}
 	
 	}
-
+	olUserstories.addAll(reportData);
 	return olUserstories;
 	}
 	

@@ -59,6 +59,7 @@ public class ReportControl implements Initializable {
 	private TextArea wvReport;
 	@FXML
 	private Button btSaveReport;
+	
 	// Tab Manual
 	// Report Overview
 	@FXML
@@ -120,7 +121,7 @@ public class ReportControl implements Initializable {
 
 	// Tab Weekly Report
 	@FXML
-	private ListView<Userstory> lvWeeklyReport;
+	private ListView<String> lvWeeklyReport;
 	@FXML
 	private ChoiceBox<String> cbEntitiyRep;
 	@FXML
